@@ -5,4 +5,8 @@ module se.iths.jd.javafxttlabthree {
 
     opens se.iths.jd.javafxttlabthree to javafx.fxml;
     exports se.iths.jd.javafxttlabthree;
+    exports se.iths.jd.javafxttlabthree.shapes.shapesMainClass;
+    opens se.iths.jd.javafxttlabthree.shapes.shapesMainClass to javafx.fxml;
+    exports se.iths.jd.javafxttlabthree.shapes;
+    opens se.iths.jd.javafxttlabthree.shapes to javafx.fxml;
 }

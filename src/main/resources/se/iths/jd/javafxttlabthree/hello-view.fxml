@@ -1,15 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="se.iths.jd.javafxttlabthree.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-
-    <Label fx:id="welcomeText" onMousePressed="#labelClicked" />
-    <Button fx:id="button1" onAction="#onHelloButtonClick" text="Hello!" />
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.iths.jd.javafxttlabthree.HelloController">
+   <children>
+      <MenuBar>
+         <menus>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#undoLatestThing" text="Undo" />
+                  <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Exit Program" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Shapes">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Size">
+                     <graphic>
+                        <Slider fx:id="sizeOfBrush" showTickLabels="true" showTickMarks="true" />
+                     </graphic></MenuItem>
+                  <MenuItem mnemonicParsing="false" text="ColorPicker">
+                     <graphic>
+                        <ColorPicker fx:id="colorPicker" />
+                     </graphic></MenuItem>
+                  <MenuItem mnemonicParsing="false" text="Eraser" />
+                  <MenuItem mnemonicParsing="false" onMenuValidation="#makeACircle" text="Circle">
+                     <graphic>
+                        <RadioButton fx:id="circleButton" mnemonicParsing="false" text="circleButton">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="shapesGroupButton" />
+                           </toggleGroup>
+                        </RadioButton>
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#makeATriangle" text="Triangle">
+                     <graphic>
+                        <RadioButton fx:id="triangleButton" mnemonicParsing="false" text="triangleButton" toggleGroup="$shapesGroupButton" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#makeARectangle" text="Rectangle">
+                     <graphic>
+                        <RadioButton fx:id="rectangleButton" mnemonicParsing="false" text="rectangleButton" toggleGroup="$shapesGroupButton" />
+                     </graphic>
+                  </MenuItem>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" onAction="#infoOfProject" text="About" />
+         </menus>
+      </MenuBar>
+      <Canvas fx:id="canvas" height="1080.0" layoutX="-2.0" layoutY="25.0" onMouseDragged="#onDrawing" width="3840.0" />
+   </children>
+</AnchorPane>

@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import se.iths.jd.javafxttlabthree.shapes.Circle;
@@ -19,15 +20,18 @@ import java.util.Queue;
 
 public class HelloController {
     Queue<Shapes> shapes = new ArrayDeque<>();
-    boolean circleISActive = false;
-    boolean rectangleIsActive = false;
-    boolean triangleIsActive = false;
     @FXML
     private Slider sizeOfBrush;
     @FXML
     private Canvas canvas;
     @FXML
     private ColorPicker colorPicker;
+    @FXML
+    private RadioButton rectangleButton;
+    @FXML
+    private RadioButton triangleButton;
+    @FXML
+    private RadioButton circleButton;
 
     @FXML
     void closeProgram(ActionEvent event) {
@@ -36,31 +40,22 @@ public class HelloController {
 
     @FXML
     void makeACircle(ActionEvent event) {
-        circleISActive = true;
-        rectangleIsActive = false;
-        triangleIsActive = false;
-        if (circleISActive) {
-            shapes.add(new Circle(sizeOfBrush.getValue(), sizeOfBrush.getValue()));
+        if (circleButton.isSelected()) {
+            shapes.add(new Circle(sizeOfBrush.getValue(), sizeOfBrush.getValue(), colorPicker.getValue()));
         }
     }
 
     @FXML
     void makeARectangle(ActionEvent event) {
-        circleISActive = false;
-        rectangleIsActive = true;
-        triangleIsActive = false;
-        if (rectangleIsActive) {
-            shapes.add(new Rectangle(sizeOfBrush.getValue(), sizeOfBrush.getValue()));
+        if (rectangleButton.isSelected()) {
+            shapes.add(new Rectangle(sizeOfBrush.getValue(), sizeOfBrush.getValue(), colorPicker.getValue()));
         }
     }
 
     @FXML
     void makeATriangle(ActionEvent event) {
-        circleISActive = false;
-        rectangleIsActive = false;
-        triangleIsActive = true;
-        if (triangleIsActive) {
-            shapes.add(new Triangle(sizeOfBrush.getValue(), sizeOfBrush.getValue()));
+        if (triangleButton.isSelected()) {
+            shapes.add(new Triangle(sizeOfBrush.getValue(), sizeOfBrush.getValue(),colorPicker.getValue()));
         }
     }
 

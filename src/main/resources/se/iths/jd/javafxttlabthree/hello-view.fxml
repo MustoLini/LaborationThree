@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
-
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.iths.jd.javafxttlabthree.HelloController">
    <children>
@@ -15,26 +16,28 @@
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#undoLatestThing" text="Undo" />
                   <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Exit Program" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Shapes">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Circle" />
-                  <MenuItem mnemonicParsing="false" text="Rectangle" />
-                  <MenuItem mnemonicParsing="false" text="Triangle" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Color">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Colors">
+                  <MenuItem mnemonicParsing="false" text="Size">
                      <graphic>
-                        <ColorPicker />
-                     </graphic>
-                  </MenuItem>
+                        <Slider fx:id="sizeOfBrush" showTickLabels="true" showTickMarks="true" />
+                     </graphic></MenuItem>
+                  <MenuItem mnemonicParsing="false" text="ColorPicker">
+                     <graphic>
+                        <ColorPicker fx:id="colorPicker" />
+                     </graphic></MenuItem>
+                  <MenuItem mnemonicParsing="false" text="Eraser" />
+                  <MenuItem mnemonicParsing="false" onAction="#makeACircle" text="Circle" />
+                  <MenuItem mnemonicParsing="false" onAction="#makeATriangle" text="Triangle" />
+                  <MenuItem mnemonicParsing="false" onAction="#makeARectangle" text="Rectangle" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" onAction="#infoOfProject" text="About" />
          </menus>
       </MenuBar>
+      <Canvas fx:id="canvas" height="1080.0" layoutX="-2.0" layoutY="25.0" onMouseDragged="#onDrawing" width="3840.0" />
    </children>
 </AnchorPane>

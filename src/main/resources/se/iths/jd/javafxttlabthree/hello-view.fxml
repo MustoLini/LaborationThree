@@ -5,7 +5,9 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.iths.jd.javafxttlabthree.HelloController">
@@ -30,9 +32,25 @@
                         <ColorPicker fx:id="colorPicker" />
                      </graphic></MenuItem>
                   <MenuItem mnemonicParsing="false" text="Eraser" />
-                  <MenuItem mnemonicParsing="false" onAction="#makeACircle" text="Circle" />
-                  <MenuItem mnemonicParsing="false" onAction="#makeATriangle" text="Triangle" />
-                  <MenuItem mnemonicParsing="false" onAction="#makeARectangle" text="Rectangle" />
+                  <MenuItem mnemonicParsing="false" onMenuValidation="#makeACircle" text="Circle">
+                     <graphic>
+                        <RadioButton fx:id="circleButton" mnemonicParsing="false" text="circleButton">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="shapesGroupButton" />
+                           </toggleGroup>
+                        </RadioButton>
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#makeATriangle" text="Triangle">
+                     <graphic>
+                        <RadioButton fx:id="triangleButton" mnemonicParsing="false" text="triangleButton" toggleGroup="$shapesGroupButton" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#makeARectangle" text="Rectangle">
+                     <graphic>
+                        <RadioButton fx:id="rectangleButton" mnemonicParsing="false" text="rectangleButton" toggleGroup="$shapesGroupButton" />
+                     </graphic>
+                  </MenuItem>
                </items>
             </Menu>
             <Menu mnemonicParsing="false" onAction="#infoOfProject" text="About" />

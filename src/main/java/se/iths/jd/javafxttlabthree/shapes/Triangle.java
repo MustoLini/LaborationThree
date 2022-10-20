@@ -1,11 +1,12 @@
 package se.iths.jd.javafxttlabthree.shapes;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.Shapes;
 
 public class Triangle extends Shapes {
-    public Triangle(double x, double y) {
-        super(x, y);
+    public Triangle(double x, double y, Color color) {
+        super(x, y, color);
     }
 
     @Override

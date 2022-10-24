@@ -18,7 +18,7 @@
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#undoLatestThing" text="Undo" />
                   <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Exit Program" />
-                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem mnemonicParsing="false" onMenuValidation="#saveImage" text="Save" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Shapes">
@@ -31,8 +31,11 @@
                      <graphic>
                         <ColorPicker fx:id="colorPicker" />
                      </graphic></MenuItem>
-                  <MenuItem mnemonicParsing="false" text="Eraser" />
-                  <MenuItem mnemonicParsing="false" onMenuValidation="#makeACircle" text="Circle">
+                  <MenuItem mnemonicParsing="false" text="Eraser">
+                     <graphic>
+                        <RadioButton fx:id="eraser" mnemonicParsing="false" text="RadioButton" />
+                     </graphic></MenuItem>
+                  <MenuItem mnemonicParsing="false" text="Circle">
                      <graphic>
                         <RadioButton fx:id="circleButton" mnemonicParsing="false" text="circleButton">
                            <toggleGroup>
@@ -51,11 +54,16 @@
                         <RadioButton fx:id="rectangleButton" mnemonicParsing="false" text="rectangleButton" toggleGroup="$shapesGroupButton" />
                      </graphic>
                   </MenuItem>
+                  <MenuItem mnemonicParsing="false" text="Normal Lines">
+                     <graphic>
+                        <RadioButton fx:id="line" mnemonicParsing="false" text="lines" toggleGroup="$shapesGroupButton" />
+                     </graphic>
+                  </MenuItem>
                </items>
             </Menu>
             <Menu mnemonicParsing="false" onAction="#infoOfProject" text="About" />
          </menus>
       </MenuBar>
-      <Canvas fx:id="canvas" height="1080.0" layoutX="-2.0" layoutY="25.0" onMouseDragged="#onDrawing" width="3840.0" />
+      <Canvas fx:id="canvas" height="1080.0" layoutX="-2.0" layoutY="25.0" width="3840.0" />
    </children>
 </AnchorPane>

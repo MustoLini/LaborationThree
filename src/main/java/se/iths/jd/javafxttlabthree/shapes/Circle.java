@@ -1,7 +1,5 @@
 package se.iths.jd.javafxttlabthree.shapes;
 
-import javafx.beans.property.FloatProperty;
-import javafx.beans.property.SimpleFloatProperty;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.Shapes;
@@ -22,6 +20,7 @@ public class Circle extends Shapes {
 
     @Override
     public void draw(GraphicsContext graphicsContext) {
+
        graphicsContext.setFill(getColor());
        graphicsContext.fillOval(getX()-(getRadius()/2)-2.5,getY()-(getRadius()/2)-2.5,getRadius()+5,getRadius()+5);
        graphicsContext.setFill(getColor());

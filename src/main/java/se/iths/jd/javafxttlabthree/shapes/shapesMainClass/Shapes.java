@@ -4,6 +4,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
+import java.awt.event.MouseEvent;
+
 public abstract class Shapes {
     //TODO Make Abstract where Circle, Rectangle, Triangle should implement.
     private double x;
@@ -16,6 +18,7 @@ public abstract class Shapes {
         this.color= color;
     }
     public abstract void draw(GraphicsContext graphicsContext);
+    public abstract void isSelected(MouseEvent mouseEvent);
 
     public double getX() {
         return x;

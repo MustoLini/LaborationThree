@@ -1,20 +1,18 @@
-package se.iths.jd.javafxttlabthree;
+package se.iths.jd.javafxttlabthree.controller_folder;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.*;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Slider;
+import javafx.scene.input.MouseEvent;
 import se.iths.jd.javafxttlabthree.Model.Model;
-import se.iths.jd.javafxttlabthree.shapes.Circle;
 import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.Shapes;
 
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.List;
 
-
-public class HelloController {
+public class Controller {
     @FXML
     private Slider sizeOfBrush;
     @FXML
@@ -35,6 +33,7 @@ public class HelloController {
     public void initialize() {
         modelInitialize = new Model();
         colorPicker.valueProperty().bindBidirectional(modelInitialize.getcolor());
+        sizeOfBrush.valueProperty().bindBidirectional(modelInitialize.sizeProperty());
         whatShapeToPick.getItems().addAll(shapeChoices);
     }
     @FXML
@@ -50,8 +49,8 @@ public class HelloController {
             eraser();
         }
     }
-@FXML
-    void handleCanvasClick(MouseEvent event){
+    @FXML
+    private void handleCanvasClick(MouseEvent event){
         double x = event.getX();
         double y = event.getY();
         modelInitialize.addShapes(x,y);
@@ -86,17 +85,6 @@ public class HelloController {
 
 
 
-    void makeACircle() {
-
-            GraphicsContext gc = canvas.getGraphicsContext2D();
-            canvas.setOnMousePressed(mouseEvent -> {
-                double size = sizeOfBrush.getValue();
-                Circle circle = new Circle(size, size, colorPicker.getValue());
-                circle.draw(gc);
-
-            });
-
-    }
 
 
 
@@ -132,6 +120,7 @@ public class HelloController {
             shape.draw(gc);
         }
     }
+
 
 
 }

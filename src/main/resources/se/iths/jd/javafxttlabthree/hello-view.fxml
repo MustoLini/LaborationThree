@@ -9,9 +9,8 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="3820.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.iths.jd.javafxttlabthree.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.iths.jd.javafxttlabthree.HelloController">
    <children>
-      <Canvas fx:id="canvas" height="1080.0" layoutX="-9.0" layoutY="14.0" onMouseClicked="#handleCanvasClick" width="3840.0" />
       <MenuBar>
          <menus>
             <Menu mnemonicParsing="false" text="Edit">
@@ -26,13 +25,11 @@
                   <MenuItem mnemonicParsing="false" text="Size">
                      <graphic>
                         <Slider fx:id="sizeOfBrush" showTickLabels="true" showTickMarks="true" />
-                     </graphic>
-                  </MenuItem>
+                     </graphic></MenuItem>
                   <MenuItem mnemonicParsing="false" text="ColorPicker">
                      <graphic>
                         <ColorPicker fx:id="colorPicker" />
-                     </graphic>
-                  </MenuItem>
+                     </graphic></MenuItem>
                   <MenuItem mnemonicParsing="false" onAction="#whatShapeYouHavePicked" text="DiffrentChapes">
                      <graphic>
                         <ChoiceBox fx:id="whatShapeToPick" prefWidth="150.0" />
@@ -43,5 +40,6 @@
             <Menu mnemonicParsing="false" onAction="#infoOfProject" text="About" />
          </menus>
       </MenuBar>
+      <Canvas fx:id="canvas" height="1080.0" layoutX="-7.0" layoutY="25.0" onMouseClicked="#handleCanvasClick" width="3840.0" />
    </children>
 </AnchorPane>

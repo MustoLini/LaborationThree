@@ -1,7 +1,6 @@
 package se.iths.jd.javafxttlabthree.shapes.shapesMainClass;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 import java.awt.event.MouseEvent;
@@ -15,9 +14,11 @@ public abstract class Shapes {
     public Shapes(double x, double y, Color color) {
         this.x = x;
         this.y = y;
-        this.color= color;
+        this.color = color;
     }
+
     public abstract void draw(GraphicsContext graphicsContext);
+
     public abstract void isSelected(MouseEvent mouseEvent);
 
     public double getX() {

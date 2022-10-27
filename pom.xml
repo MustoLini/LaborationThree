@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>se.iths.jd.javafxttlabthree/se.iths.jd.javafxttlabthree.HelloApplication
+                            <mainClass>se.iths.jd.javafxttlabthree/se.iths.jd.javafxttlabthree.View
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

@@ -8,8 +8,10 @@ import java.awt.event.MouseEvent;
 
 public class Circle extends Shapes {
     private double radius;
-    public Circle(double x, double y, Color color) {
+
+    public Circle(double x, double y, Color color, double radius) {
         super(x, y, color);
+        this.radius = radius;
     }
 
     public double getRadius() {
@@ -23,10 +25,10 @@ public class Circle extends Shapes {
     @Override
     public void draw(GraphicsContext graphicsContext) {
 
-       graphicsContext.setFill(getColor());
-       graphicsContext.fillOval(getX()-(getRadius()/2)-2.5,getY()-(getRadius()/2)-2.5,getRadius()+5,getRadius()+5);
-       graphicsContext.setFill(getColor());
-       graphicsContext.fillOval(getX()-(getRadius()/2), getY()-(getRadius()/2), getRadius(),getRadius());
+        graphicsContext.setFill(getColor());
+        graphicsContext.fillOval(getX() - (getRadius() / 2) - 2.5, getY() - (getRadius() / 2) - 2.5, getRadius() + 5, getRadius() + 5);
+        graphicsContext.setFill(getColor());
+        graphicsContext.fillOval(getX() - (getRadius() / 2), getY() - (getRadius() / 2), getRadius(), getRadius());
     }
 
     @Override

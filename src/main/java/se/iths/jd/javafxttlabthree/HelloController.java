@@ -5,37 +5,36 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
+import se.iths.jd.javafxttlabthree.Model.Model;
 import se.iths.jd.javafxttlabthree.shapes.Circle;
-import se.iths.jd.javafxttlabthree.shapes.Rectangle;
-import se.iths.jd.javafxttlabthree.shapes.Triangle;
 import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.Shapes;
 
-import java.util.ArrayDeque;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 
 
 public class HelloController {
-    List<Shapes> shapes = new ArrayList<>();
     @FXML
     private Slider sizeOfBrush;
     @FXML
     private Canvas canvas;
-    String[]shapeChoices= new String[]{"Draw Normal","Make a Circle", "Make a Rectangle", "Make a Triangle", "Eraser"};
+    String[]shapeChoices= new String[]{"Draw Normal","Make a Circle", "Make a Rectangle", "Eraser"};
     @FXML
     private ColorPicker colorPicker;
     @FXML
     private ChoiceBox<String> whatShapeToPick;
-
+    Model modelInitialize;
 
 
     @FXML
     void closeProgram(ActionEvent event) {
         System.exit(1);
     }
-    @FXML
+
     public void initialize() {
+        modelInitialize = new Model();
+        colorPicker.valueProperty().bindBidirectional(modelInitialize.getcolor());
         whatShapeToPick.getItems().addAll(shapeChoices);
     }
     @FXML
@@ -44,14 +43,19 @@ public class HelloController {
         if ("Draw Normal".equals(value)) {
             drawNormal();
         } else if ("Make a Circle".equals(value)) {
-            makeACircle();
-        } else if ("Make a Triangle".equals(value)) {
-            makeATriangle();
-        } else if ("Make a Rectangle".equals(value)) {
-            makeARectangle();
+            modelInitialize.circleISSelected(true);
+        }  else if ("Make a Rectangle".equals(value)) {
+            modelInitialize.rectangleISSSelected(true);
         }else if ("Eraser".equals(value)){
             eraser();
         }
+    }
+@FXML
+    void handleCanvasClick(MouseEvent event){
+        double x = event.getX();
+        double y = event.getY();
+        modelInitialize.addShapes(x,y);
+        executeDraw();
     }
 
 
@@ -95,16 +99,8 @@ public class HelloController {
     }
 
 
-    void makeARectangle() {
-
-        shapes.add(new Rectangle(sizeOfBrush.getValue(), sizeOfBrush.getValue(), colorPicker.getValue()));
-
-    }
 
 
-    void makeATriangle() {
-        shapes.add(new Triangle(sizeOfBrush.getValue(), sizeOfBrush.getValue(), colorPicker.getValue()));
-    }
 
 
     @FXML
@@ -125,6 +121,16 @@ public class HelloController {
     void saveImage(ActionEvent event) {
 
 
+    }
+
+
+    private void executeDraw(){
+        GraphicsContext gc= canvas.getGraphicsContext2D();
+        gc.clearRect(0,0,canvas.getWidth(),canvas.getHeight());
+
+        for (Shapes shape: modelInitialize.getShapes()){
+            shape.draw(gc);
+        }
     }
 
 

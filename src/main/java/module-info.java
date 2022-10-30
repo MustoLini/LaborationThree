@@ -12,6 +12,6 @@ module se.iths.jd.javafxttlabthree {
     opens se.iths.jd.javafxttlabthree.shapes to javafx.fxml;
     exports se.iths.jd.javafxttlabthree.Model;
     opens se.iths.jd.javafxttlabthree.Model to javafx.fxml;
-    exports se.iths.jd.javafxttlabthree.controller_folder;
-    opens se.iths.jd.javafxttlabthree.controller_folder to javafx.fxml;
+    exports se.iths.jd.javafxttlabthree.controller;
+    opens se.iths.jd.javafxttlabthree.controller to javafx.fxml;
 }

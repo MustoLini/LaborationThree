@@ -1,4 +1,4 @@
-package se.iths.jd.javafxttlabthree.controller_folder;
+package se.iths.jd.javafxttlabthree.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -42,9 +42,11 @@ public class Controller {
         if ("Draw Normal".equals(value)) {
             drawNormal();
         } else if ("Make a Circle".equals(value)) {
-            modelInitialize.circleISSelected(true);
+            modelInitialize.setCircleSelected(true);
+            modelInitialize.setSquareSelected(false);
         }  else if ("Make a Rectangle".equals(value)) {
-            modelInitialize.rectangleISSSelected(true);
+            modelInitialize.setSquareSelected(true);
+            modelInitialize.setCircleSelected(false);
         }else if ("Eraser".equals(value)){
             eraser();
         }
@@ -82,13 +84,6 @@ public class Controller {
             gc.clearRect(x,y,size,size);
         });
     }
-
-
-
-
-
-
-
 
 
     @FXML

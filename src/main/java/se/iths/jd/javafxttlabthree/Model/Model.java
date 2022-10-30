@@ -1,12 +1,9 @@
 package se.iths.jd.javafxttlabthree.Model;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.*;
 import javafx.scene.paint.Color;
 import se.iths.jd.javafxttlabthree.shapes.Circle;
-import se.iths.jd.javafxttlabthree.shapes.Rectangle;
+import se.iths.jd.javafxttlabthree.shapes.Square;
 import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.Shapes;
 
 import java.util.ArrayList;
@@ -14,42 +11,48 @@ import java.util.List;
 
 public class Model {
 
-    List<Shapes> shapes;
-    ObjectProperty<Color> color;
-    DoubleProperty size;
+    private final List<Shapes> shapes;
+    private final ObjectProperty<Color> color;
+    private final DoubleProperty size;
+    BooleanProperty circleSelected;
+    BooleanProperty squareSelected;
 
     public Model() {
 
         shapes = new ArrayList<>();
         color = new SimpleObjectProperty<>(Color.BLACK);
         size = new SimpleDoubleProperty(4.3);
+        circleSelected = new SimpleBooleanProperty(false);
+        squareSelected = new SimpleBooleanProperty(false);
+
     }
 
+    public boolean isCircleSelected() {
+        return circleSelected.get();
+    }
+
+    public void setCircleSelected(boolean circleSelected) {
+        this.circleSelected.set(circleSelected);
+    }
+
+    public boolean isSquareSelected() {
+        return squareSelected.get();
+    }
+
+    public void setSquareSelected(boolean squareSelected) {
+        this.squareSelected.set(squareSelected);
+    }
 
     public void addShapes(double x, double y) {
-        if (rectangleISSSelected(true)) {
-            shapes.add(new Rectangle(x, y, color.getValue()));
+        if (isSquareSelected()) {
+            shapes.add(new Square(x, y, color.getValue(), size.getValue()));
+
         }
-        if (circleISSelected(true)) {
+        if (isCircleSelected()) {
             shapes.add(new Circle(x, y, color.getValue(), size.getValue()));
         }
     }
 
-    public boolean rectangleISSSelected(boolean isSelected) {
-        if (isSelected == true) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean circleISSelected(boolean isSelected) {
-        if (isSelected == true) {
-            return true;
-        }
-
-        return false;
-
-    }
 
     public ObjectProperty<Color> getcolor() {
         return color;

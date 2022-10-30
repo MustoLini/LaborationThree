@@ -9,7 +9,7 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.iths.jd.javafxttlabthree.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.iths.jd.javafxttlabthree.controller.Controller">
    <children>
       <MenuBar>
          <menus>
@@ -40,6 +40,6 @@
             <Menu mnemonicParsing="false" onAction="#infoOfProject" text="About" />
          </menus>
       </MenuBar>
-      <Canvas fx:id="canvas" height="1080.0" layoutX="-7.0" layoutY="25.0" width="3840.0" />
+      <Canvas fx:id="canvas" height="1080.0" layoutX="-7.0" layoutY="25.0" onMouseClicked="#handleCanvasClick" width="3840.0" />
    </children>
 </AnchorPane>

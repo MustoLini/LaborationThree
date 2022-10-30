@@ -1,41 +1,39 @@
-package se.iths.jd.javafxttlabthree;
+package se.iths.jd.javafxttlabthree.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.*;
-import se.iths.jd.javafxttlabthree.shapes.Circle;
-import se.iths.jd.javafxttlabthree.shapes.Rectangle;
-import se.iths.jd.javafxttlabthree.shapes.Triangle;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Slider;
+import javafx.scene.input.MouseEvent;
+import se.iths.jd.javafxttlabthree.Model.Model;
 import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.Shapes;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
 
-
-public class HelloController {
-    List<Shapes> shapes = new ArrayList<>();
+public class Controller {
     @FXML
     private Slider sizeOfBrush;
     @FXML
     private Canvas canvas;
-    String[]shapeChoices= new String[]{"Draw Normal","Make a Circle", "Make a Rectangle", "Make a Triangle", "Eraser"};
+    String[]shapeChoices= new String[]{"Draw Normal","Make a Circle", "Make a Rectangle", "Eraser"};
     @FXML
     private ColorPicker colorPicker;
     @FXML
     private ChoiceBox<String> whatShapeToPick;
-
+    Model modelInitialize;
 
 
     @FXML
     void closeProgram(ActionEvent event) {
         System.exit(1);
     }
-    @FXML
+
     public void initialize() {
+        modelInitialize = new Model();
+        colorPicker.valueProperty().bindBidirectional(modelInitialize.getcolor());
+        sizeOfBrush.valueProperty().bindBidirectional(modelInitialize.sizeProperty());
         whatShapeToPick.getItems().addAll(shapeChoices);
     }
     @FXML
@@ -44,14 +42,21 @@ public class HelloController {
         if ("Draw Normal".equals(value)) {
             drawNormal();
         } else if ("Make a Circle".equals(value)) {
-            makeACircle();
-        } else if ("Make a Triangle".equals(value)) {
-            makeATriangle();
-        } else if ("Make a Rectangle".equals(value)) {
-            makeARectangle();
+            modelInitialize.setCircleSelected(true);
+            modelInitialize.setSquareSelected(false);
+        }  else if ("Make a Rectangle".equals(value)) {
+            modelInitialize.setSquareSelected(true);
+            modelInitialize.setCircleSelected(false);
         }else if ("Eraser".equals(value)){
             eraser();
         }
+    }
+    @FXML
+    private void handleCanvasClick(MouseEvent event){
+        double x = event.getX();
+        double y = event.getY();
+        modelInitialize.addShapes(x,y);
+        executeDraw();
     }
 
 
@@ -81,32 +86,6 @@ public class HelloController {
     }
 
 
-
-    void makeACircle() {
-
-            GraphicsContext gc = canvas.getGraphicsContext2D();
-            canvas.setOnMousePressed(mouseEvent -> {
-                double size = sizeOfBrush.getValue();
-                Circle circle = new Circle(size, size, colorPicker.getValue());
-                circle.draw(gc);
-
-            });
-
-    }
-
-
-    void makeARectangle() {
-
-        shapes.add(new Rectangle(sizeOfBrush.getValue(), sizeOfBrush.getValue(), colorPicker.getValue()));
-
-    }
-
-
-    void makeATriangle() {
-        shapes.add(new Triangle(sizeOfBrush.getValue(), sizeOfBrush.getValue(), colorPicker.getValue()));
-    }
-
-
     @FXML
     void undoLatestThing(ActionEvent event) {
         //TODO Checks what is in latest in stack and removes it, does it from another class.
@@ -126,6 +105,17 @@ public class HelloController {
 
 
     }
+
+
+    private void executeDraw(){
+        GraphicsContext gc= canvas.getGraphicsContext2D();
+        gc.clearRect(0,0,canvas.getWidth(),canvas.getHeight());
+
+        for (Shapes shape: modelInitialize.getShapes()){
+            shape.draw(gc);
+        }
+    }
+
 
 
 }

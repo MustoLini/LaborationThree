@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
@@ -23,6 +24,8 @@ public class Controller {
     private ColorPicker colorPicker;
     @FXML
     private ChoiceBox<String> whatShapeToPick;
+    @FXML
+    private CheckBox isSelected;
 
     @FXML
     void closeProgram(ActionEvent event) {
@@ -34,6 +37,7 @@ public class Controller {
         colorPicker.valueProperty().bindBidirectional(modelInitialize.getcolor());
         sizeOfBrush.valueProperty().bindBidirectional(modelInitialize.sizeProperty());
         whatShapeToPick.getItems().addAll(shapeChoices);
+        isSelected.selectedProperty().bindBidirectional(modelInitialize.selectedModeProperty());
     }
 
     @FXML

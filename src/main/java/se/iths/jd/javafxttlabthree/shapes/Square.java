@@ -4,8 +4,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.Shapes;
 
-import java.awt.event.MouseEvent;
-
 public class Square extends Shapes {
     double radius;
 
@@ -26,8 +24,8 @@ public class Square extends Shapes {
     }
 
     @Override
-    public void isSelected(MouseEvent mouseEvent) {
-
+    public boolean isSelected() {
+        return true;
     }
     // TODO: 10/18/2022 Implement Shapes From Inteface Shapes
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Menu?>
@@ -18,6 +19,11 @@
                   <MenuItem mnemonicParsing="false" onAction="#undoLatestThing" text="Undo" />
                   <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Exit Program" />
                   <MenuItem mnemonicParsing="false" onMenuValidation="#saveImage" text="Save" />
+                  <MenuItem mnemonicParsing="false" text="IsSelected">
+                     <graphic>
+                        <CheckBox fx:id="isSelected" mnemonicParsing="false" text="Selcted" />
+                     </graphic>
+                  </MenuItem>
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Shapes">

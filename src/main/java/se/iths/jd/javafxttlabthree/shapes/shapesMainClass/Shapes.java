@@ -3,8 +3,6 @@ package se.iths.jd.javafxttlabthree.shapes.shapesMainClass;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-import java.awt.event.MouseEvent;
-
 public abstract class Shapes {
     //TODO Make Abstract where Circle, Rectangle, Triangle should implement.
     private double x;
@@ -19,7 +17,7 @@ public abstract class Shapes {
 
     public abstract void draw(GraphicsContext graphicsContext);
 
-    public abstract void isSelected(MouseEvent mouseEvent);
+    public abstract boolean isSelected();
 
     public double getX() {
         return x;

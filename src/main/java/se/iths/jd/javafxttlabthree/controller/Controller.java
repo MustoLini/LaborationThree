@@ -13,7 +13,7 @@ import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.Shapes;
 
 
 public class Controller {
-    String[] shapeChoices = new String[]{"Draw Normal", "Make a Circle", "Make a Rectangle", "Eraser"};
+    String[] shapeChoices = new String[]{"Make a Circle", "Make a Square"};
     Model modelInitialize;
     @FXML
     private Slider sizeOfBrush;
@@ -39,16 +39,12 @@ public class Controller {
     @FXML
     public void whatShapeYouHavePicked(ActionEvent event) {
         String value = whatShapeToPick.getValue();
-        if ("Draw Normal".equals(value)) {
-            drawNormal();
-        } else if ("Make a Circle".equals(value)) {
+        if ("Make a Circle".equals(value)) {
             modelInitialize.setCircleSelected(true);
             modelInitialize.setSquareSelected(false);
         } else if ("Make a Rectangle".equals(value)) {
             modelInitialize.setSquareSelected(true);
             modelInitialize.setCircleSelected(false);
-        } else if ("Eraser".equals(value)) {
-            eraser();
         }
     }
 
@@ -60,32 +56,6 @@ public class Controller {
         drawOnExecute();
     }
 
-
-    void drawNormal() {
-
-
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        canvas.setOnMouseDragged(mouseEvent -> {
-            double size = sizeOfBrush.getValue();
-            double x = mouseEvent.getX() - size / 2;
-            double y = mouseEvent.getY() - size / 2;
-            gc.setFill(colorPicker.getValue());
-            gc.fillRect(x, y, size, size);
-
-        });
-
-    }
-
-    void eraser() {
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        canvas.setOnMouseDragged(mouseEvent -> {
-            double size = sizeOfBrush.getValue();
-            double x = mouseEvent.getX() - size / 2;
-            double y = mouseEvent.getY() - size / 2;
-
-            gc.clearRect(x, y, size, size);
-        });
-    }
 
 
     @FXML

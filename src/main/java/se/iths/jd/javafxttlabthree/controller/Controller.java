@@ -4,17 +4,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import se.iths.jd.javafxttlabthree.Model.Model;
 import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.Shapes;
 
 
 public class Controller {
-    String[] shapeChoices = new String[]{"Make a Circle", "Make a Square"};
+    String[] shapeChoices = new String[]{"Make a Circle", "Make a Square", "IsSelected"};
     Model modelInitialize;
     @FXML
     private Slider sizeOfBrush;
@@ -24,8 +24,7 @@ public class Controller {
     private ColorPicker colorPicker;
     @FXML
     private ChoiceBox<String> whatShapeToPick;
-    @FXML
-    private CheckBox isSelected;
+
 
     @FXML
     void closeProgram(ActionEvent event) {
@@ -37,7 +36,7 @@ public class Controller {
         colorPicker.valueProperty().bindBidirectional(modelInitialize.getcolor());
         sizeOfBrush.valueProperty().bindBidirectional(modelInitialize.sizeProperty());
         whatShapeToPick.getItems().addAll(shapeChoices);
-        isSelected.selectedProperty().bindBidirectional(modelInitialize.selectedModeProperty());
+
     }
 
     @FXML
@@ -46,9 +45,15 @@ public class Controller {
         if ("Make a Circle".equals(value)) {
             modelInitialize.setCircleSelected(true);
             modelInitialize.setSquareSelected(false);
-        } else if ("Make a Rectangle".equals(value)) {
+            modelInitialize.setSelectedMode(false);
+        } else if ("Make a Square".equals(value)) {
             modelInitialize.setSquareSelected(true);
             modelInitialize.setCircleSelected(false);
+            modelInitialize.setSelectedMode(false);
+        } else if ("IsSelected".equals(value)) {
+            modelInitialize.setSelectedMode(true);
+            modelInitialize.setCircleSelected(false);
+            modelInitialize.setSquareSelected(false);
         }
     }
 
@@ -56,7 +61,19 @@ public class Controller {
     private void handleCanvasClick(MouseEvent event) {
         double x = event.getX();
         double y = event.getY();
-        modelInitialize.addShapes(x, y);
+        String value = whatShapeToPick.getValue();
+        if ("IsSelected".equals(value)){
+            for (Shapes shapes: modelInitialize.getShapes()) {
+                if (shapes.isSelected( x,  y)){
+                    shapes.setBorderColor(Color.MAGENTA);
+                    modelInitialize.getSelectedShapes().add(shapes);
+                }
+            }
+        }
+        else {
+            modelInitialize.addShapes(x, y);
+        }
+
         drawOnExecute();
     }
 

@@ -17,16 +17,25 @@ public class Model {
     BooleanProperty squareSelected;
     BooleanProperty selectedMode;
     private List<Shapes> shapes;
+    private List<Shapes> selectedShapes;
+
+    public List<Shapes> getSelectedShapes() {
+        return selectedShapes;
+    }
+
+    public void setSelectedShapes(List<Shapes> selectedShapes) {
+        this.selectedShapes = selectedShapes;
+    }
 
     public Model() {
 
         shapes = new ArrayList<>();
+        selectedShapes= new ArrayList<>();
         color = new SimpleObjectProperty<>(Color.BLACK);
         size = new SimpleDoubleProperty(4.3);
         circleSelected = new SimpleBooleanProperty(false);
         squareSelected = new SimpleBooleanProperty(false);
         selectedMode = new SimpleBooleanProperty(false);
-
     }
 
     public boolean isCircleSelected() {
@@ -104,15 +113,8 @@ public class Model {
         return (ArrayList<Shapes>) shapes;
     }
 
-    public boolean isSelectedMode() {
-        return selectedMode.get();
-    }
 
-    public BooleanProperty selectedModeProperty() {
-        return selectedMode;
-    }
-
-    public void setSelectedMode(boolean seletedMode) {
-        this.selectedMode.set(seletedMode);
+    public void setSelectedMode(boolean seletedmode) {
+        this.selectedMode.set(seletedmode);
     }
 }

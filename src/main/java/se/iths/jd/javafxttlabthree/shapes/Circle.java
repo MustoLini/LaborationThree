@@ -23,15 +23,18 @@ public class Circle extends Shapes {
     @Override
     public void draw(GraphicsContext graphicsContext) {
 
-        graphicsContext.setFill(getColor());
+        graphicsContext.setFill(getBorderColor());
         graphicsContext.fillOval(getX() - (getRadius() / 2) - 2.5, getY() - (getRadius() / 2) - 2.5, getRadius() + 5, getRadius() + 5);
         graphicsContext.setFill(getColor());
         graphicsContext.fillOval(getX() - (getRadius() / 2), getY() - (getRadius() / 2), getRadius(), getRadius());
     }
 
     @Override
-    public boolean isSelected() {
-        return true;
+    public boolean isSelected(double x, double y) {
+        double areaX= x- getX();
+        double areaY= y- getY();
+        double distance= Math.sqrt((areaX*areaX)+ (areaY*areaY));
+        return distance<= getRadius();
     }
     // TODO: 10/18/2022 Implement Shapes From Inteface Shapes
 }

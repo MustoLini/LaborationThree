@@ -11,11 +11,11 @@ import java.util.List;
 
 public class Model {
 
-    private final List<Shapes> shapes;
     private final ObjectProperty<Color> color;
     private final DoubleProperty size;
     BooleanProperty circleSelected;
     BooleanProperty squareSelected;
+    private List<Shapes> shapes;
 
     public Model() {
 
@@ -53,7 +53,6 @@ public class Model {
         }
     }
 
-
     public ObjectProperty<Color> getcolor() {
         return color;
     }
@@ -62,7 +61,45 @@ public class Model {
         return shapes;
     }
 
+    public void setShapes(List<Shapes> shapes) {
+        this.shapes = shapes;
+    }
+
+    public Color getColor() {
+        return color.get();
+    }
+
+    public void setColor(Color color) {
+        this.color.set(color);
+    }
+
+    public ObjectProperty<Color> colorProperty() {
+        return color;
+    }
+
+    public double getSize() {
+        return size.get();
+    }
+
+    public void setSize(double size) {
+        this.size.set(size);
+    }
+
+    public BooleanProperty circleSelectedProperty() {
+        return circleSelected;
+    }
+
+    public BooleanProperty squareSelectedProperty() {
+        return squareSelected;
+    }
+
     public DoubleProperty sizeProperty() {
         return size;
     }
+
+    public ArrayList<Shapes> remove() {
+        shapes.remove(shapes.size() - 1);
+        return (ArrayList<Shapes>) shapes;
+    }
+
 }

@@ -8,16 +8,26 @@ public abstract class Shapes {
     private double x;
     private double y;
     private Color color;
+    private Color borderColor;
+
+    public Color getBorderColor() {
+        return borderColor;
+    }
+
+    public void setBorderColor(Color borderColor) {
+        this.borderColor = borderColor;
+    }
 
     public Shapes(double x, double y, Color color) {
         this.x = x;
         this.y = y;
         this.color = color;
+        this.borderColor= Color.TRANSPARENT;
     }
 
     public abstract void draw(GraphicsContext graphicsContext);
 
-    public abstract boolean isSelected();
+    public abstract boolean isSelected(double x , double y);
 
     public double getX() {
         return x;

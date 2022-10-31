@@ -15,17 +15,24 @@ public class Square extends Shapes {
 
     @Override
     public void draw(GraphicsContext graphicsContext) {
-        graphicsContext.setFill(getColor());
+        graphicsContext.setFill(getBorderColor());
         graphicsContext.fillRect(getX() - (radius / 2) - 2.5, getY() - (radius / 2) - 2.5, radius + 5, radius + 5);
         graphicsContext.setFill(getColor());
-        graphicsContext.fillRect(getX() - (radius / 2), getY() - (radius / 2) - 2.5, radius, radius);
+        graphicsContext.fillRect(getX() - (radius / 2), getY() - (radius / 2) , radius, radius);
 
 
     }
 
     @Override
-    public boolean isSelected() {
-        return true;
+    public boolean isSelected(double x, double y) {
+        double xArea = x - (radius / 2);
+        double yArea = y - (radius / 2);
+
+        return x >= xArea &&
+                x <= xArea + ((radius )) &&
+                y >= yArea &&
+                y <= yArea + ((radius ));
+
     }
     // TODO: 10/18/2022 Implement Shapes From Inteface Shapes
 }

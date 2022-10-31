@@ -3,23 +3,31 @@ package se.iths.jd.javafxttlabthree.shapes.shapesMainClass;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-import java.awt.event.MouseEvent;
-
 public abstract class Shapes {
     //TODO Make Abstract where Circle, Rectangle, Triangle should implement.
     private double x;
     private double y;
     private Color color;
+    private Color borderColor;
+
+    public Color getBorderColor() {
+        return borderColor;
+    }
+
+    public void setBorderColor(Color borderColor) {
+        this.borderColor = borderColor;
+    }
 
     public Shapes(double x, double y, Color color) {
         this.x = x;
         this.y = y;
         this.color = color;
+        this.borderColor= Color.TRANSPARENT;
     }
 
     public abstract void draw(GraphicsContext graphicsContext);
 
-    public abstract void isSelected(MouseEvent mouseEvent);
+    public abstract boolean isSelected(double x , double y);
 
     public double getX() {
         return x;

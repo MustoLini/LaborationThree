@@ -32,7 +32,7 @@
                      </graphic></MenuItem>
                   <MenuItem mnemonicParsing="false" onAction="#whatShapeYouHavePicked" text="DiffrentChapes">
                      <graphic>
-                        <ChoiceBox fx:id="whatShapeToPick" prefWidth="150.0" />
+                        <ChoiceBox fx:id="choiceBox" prefWidth="150.0" />
                      </graphic>
                   </MenuItem>
                </items>

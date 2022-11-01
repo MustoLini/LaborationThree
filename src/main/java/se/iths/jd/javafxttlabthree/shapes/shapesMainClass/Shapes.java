@@ -4,7 +4,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public abstract class Shapes {
-    //TODO Make Abstract where Circle, Rectangle, Triangle should implement.
     private double x;
     private double y;
     private Color color;

@@ -3,22 +3,22 @@ package se.iths.jd.javafxttlabthree.Model;
 import javafx.beans.property.*;
 import javafx.scene.paint.Color;
 import se.iths.jd.javafxttlabthree.shapes.Circle;
-import se.iths.jd.javafxttlabthree.shapes.ShapeType;
+import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.ShapeType;
 import se.iths.jd.javafxttlabthree.shapes.Square;
 import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.Shapes;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static se.iths.jd.javafxttlabthree.shapes.ShapeType.CIRCLE;
-import static se.iths.jd.javafxttlabthree.shapes.ShapeType.SQUARE;
+import static se.iths.jd.javafxttlabthree.shapes.shapesMainClass.ShapeType.CIRCLE;
+import static se.iths.jd.javafxttlabthree.shapes.shapesMainClass.ShapeType.SQUARE;
 
 public class Model {
 
     private final ObjectProperty<Color> color;
     private final DoubleProperty size;
-    private List<Shapes> shapes;
-    private List<Shapes> selectedShapes;
+    private final List<Shapes> shapes;
+    private final List<Shapes> selectedShapes;
     ShapeType whatShapeISSelected;
 
     public Model() {
@@ -89,9 +89,8 @@ public class Model {
         return size;
     }
 
-    public ArrayList<Shapes> remove() {
+    public void remove() {
         shapes.remove(shapes.size() - 1);
-        return (ArrayList<Shapes>) shapes;
     }
 
 }

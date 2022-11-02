@@ -12,7 +12,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import se.iths.jd.javafxttlabthree.Model.Model;
-import se.iths.jd.javafxttlabthree.shapes.ShapeType;
+import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.ShapeType;
 import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.Shapes;
 
 
@@ -45,7 +45,6 @@ public class Controller {
 
     @FXML
     public void whatShapeYouHavePicked(ActionEvent event) {
-
         switch (choiceBox.getValue()) {
             case CIRCLE -> {
                 modelInitialize.setWhatShapeISSelected(ShapeType.CIRCLE);
@@ -74,7 +73,6 @@ public class Controller {
         else {
             modelInitialize.addShapes(x, y);
         }
-
         drawOnExecute();
     }
 

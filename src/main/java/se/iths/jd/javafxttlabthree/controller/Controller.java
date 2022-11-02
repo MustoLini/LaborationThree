@@ -40,6 +40,7 @@ public class Controller {
         sizeOfBrush.valueProperty().bindBidirectional(modelInitialize.sizeProperty());
         choiceBox.setItems(shapeTypesList);
 
+
     }
 
     @FXML
@@ -47,19 +48,13 @@ public class Controller {
 
         switch (choiceBox.getValue()) {
             case CIRCLE -> {
-                modelInitialize.setCircleSelected(true);
-                modelInitialize.setSquareSelected(false);
-                modelInitialize.setSelectedMode(false);
+                modelInitialize.setWhatShapeISSelected(ShapeType.CIRCLE);
             }
             case SQUARE -> {
-                modelInitialize.setSquareSelected(true);
-                modelInitialize.setCircleSelected(false);
-                modelInitialize.setSelectedMode(false);
+                modelInitialize.setWhatShapeISSelected(ShapeType.SQUARE);
             }
             case IsSelected -> {
-                modelInitialize.setSelectedMode(true);
-                modelInitialize.setCircleSelected(false);
-                modelInitialize.setSquareSelected(false);
+                modelInitialize.setWhatShapeISSelected(ShapeType.IsSelected);
             }
         }
     }

@@ -92,5 +92,10 @@ public class Model {
     public void remove() {
         shapes.remove(shapes.size() - 1);
     }
+    public void switchColorOnSelected(){
+        for (Shapes shapes : selectedShapes){
+            shapes.setColor(getColor());
+        }
+    }
 
 }

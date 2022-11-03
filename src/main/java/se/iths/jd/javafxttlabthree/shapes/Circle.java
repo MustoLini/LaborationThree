@@ -40,7 +40,7 @@ public class Circle extends Shapes {
     @Override
     public String toSVG() {
         String color= "#"+ getColor().toString().substring(2,10);
-        return "<circle cx=\""+getX()+"\" cy\""+getY()+"\" r=\""+ getRadius()/2+"\" fill=\""+ color+"\" />";
+        return "<circle cx=\""+getX()+"\" cy=\""+getY()+"\" r=\""+ getRadius()/2+"\" fill=\""+ color+"\" />";
     }
     // TODO: 10/18/2022 Implement Shapes From Inteface Shapes
 }

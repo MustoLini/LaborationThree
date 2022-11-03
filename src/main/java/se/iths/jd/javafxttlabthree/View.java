@@ -7,6 +7,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class View extends javafx.application.Application {
+    public static void main(String[] args) {
+        launch();
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(View.class.getResource("hello-view.fxml"));
@@ -15,9 +19,5 @@ public class View extends javafx.application.Application {
         stage.setScene(scene);
         stage.show();
 
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }

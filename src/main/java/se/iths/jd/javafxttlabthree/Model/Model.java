@@ -15,10 +15,10 @@ import static se.iths.jd.javafxttlabthree.shapes.shapesMainClass.ShapeType.SQUAR
 
 public class Model {
 
-    private final ObjectProperty<Color> color;
-    private final DoubleProperty size;
-    private final List<Shapes> shapes;
-    private final List<Shapes> selectedShapes;
+    ObjectProperty<Color> color;
+    DoubleProperty size;
+    public List<Shapes> shapes;
+    public List<Shapes> selectedShapes;
     ShapeType whatShapeISSelected;
 
     public Model() {

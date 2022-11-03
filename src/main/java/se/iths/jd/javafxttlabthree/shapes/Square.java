@@ -34,5 +34,11 @@ public class Square extends Shapes {
                 y <= yArea + ((radius ));
 
     }
+
+    @Override
+    public String toSVG() {
+        String color= "#"+getColor().toString().substring(2,10);
+        return "<rect x=\"" + getX() + "\" y=\"" + getY() + "\" width=\"" + radius/2 + "\" height=\"" + radius/2 + "\" fill=\"" + color + "\" />";
+    }
     // TODO: 10/18/2022 Implement Shapes From Inteface Shapes
 }

@@ -2,6 +2,7 @@ module se.iths.jd.javafxttlabthree {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
+    requires javafx.swing;
 
 
     opens se.iths.jd.javafxttlabthree to javafx.fxml;

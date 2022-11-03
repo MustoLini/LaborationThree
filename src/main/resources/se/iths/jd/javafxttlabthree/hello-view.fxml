@@ -18,7 +18,7 @@
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#undoLatestThing" text="Undo" />
                   <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Exit Program" />
-                  <MenuItem mnemonicParsing="false" onMenuValidation="#saveImage" text="Save" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveImage" onMenuValidation="#saveImage" text="Save" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Shapes">

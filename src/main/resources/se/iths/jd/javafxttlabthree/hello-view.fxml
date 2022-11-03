@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Menu?>
@@ -26,13 +27,18 @@
                      <graphic>
                         <Slider fx:id="sizeOfBrush" showTickLabels="true" showTickMarks="true" />
                      </graphic></MenuItem>
-                  <MenuItem mnemonicParsing="false" text="ColorPicker">
+                  <MenuItem mnemonicParsing="false" text="Color Picker">
                      <graphic>
                         <ColorPicker fx:id="colorPicker" />
                      </graphic></MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#whatShapeYouHavePicked" text="DiffrentChapes">
+                  <MenuItem mnemonicParsing="false" onAction="#whatShapeYouHavePicked" text="Diffrent Shapes">
                      <graphic>
                         <ChoiceBox fx:id="choiceBox" prefWidth="150.0" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" text="Switch Color">
+                     <graphic>
+                        <Button mnemonicParsing="false" onMouseReleased="#switchColor" text="Switch Color Button" />
                      </graphic>
                   </MenuItem>
                </items>

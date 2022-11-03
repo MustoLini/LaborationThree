@@ -2,21 +2,31 @@ package se.iths.jd.javafxttlabthree.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Slider;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import se.iths.jd.javafxttlabthree.Model.Model;
+import se.iths.jd.javafxttlabthree.SaveSVG;
 import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.ShapeType;
 import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.Shapes;
 
+import javax.imageio.ImageIO;
+import java.io.File;
+
 
 public class Controller {
+    @FXML
+    private MenuItem saveImage;
+
     Model modelInitialize;
     @FXML
     private Slider sizeOfBrush;
@@ -90,8 +100,15 @@ public class Controller {
 
 
     @FXML
-    void saveImage(ActionEvent event) {
+    void saveImage() {
+        SaveSVG.save(modelInitialize);
 
+        try {
+            Image snapShot= canvas.snapshot(null,null);
+            ImageIO.write(SwingFXUtils.fromFXImage(snapShot, null), "png", new File("paint.png"));
+        } catch (Exception e) {
+            System.out.println("Failed to save " + e);
+        }
 
     }
     @FXML

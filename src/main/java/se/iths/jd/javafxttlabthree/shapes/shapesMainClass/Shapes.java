@@ -9,6 +9,17 @@ public abstract class Shapes {
     private Color color;
     private Color borderColor;
 
+    public Shapes(double x, double y, Color color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.borderColor = Color.TRANSPARENT;
+    }
+
+    public static String colorToString(Color color) {
+        return String.format("#%02X%02X%02X", (int) (color.getRed() * 255), (int) (color.getGreen() * 255), (int) (color.getBlue() * 255));
+    }
+
     public Color getBorderColor() {
         return borderColor;
     }
@@ -17,16 +28,9 @@ public abstract class Shapes {
         this.borderColor = borderColor;
     }
 
-    public Shapes(double x, double y, Color color) {
-        this.x = x;
-        this.y = y;
-        this.color = color;
-        this.borderColor= Color.TRANSPARENT;
-    }
-
     public abstract void draw(GraphicsContext graphicsContext);
 
-    public abstract boolean isSelected(double x , double y);
+    public abstract boolean isSelected(double x, double y);
 
     public double getX() {
         return x;
@@ -51,9 +55,6 @@ public abstract class Shapes {
     public void setColor(Color color) {
         this.color = color;
     }
+
     public abstract String toSVG();
-    public static String colorToString(Color color )
-    {
-        return String.format("#%02X%02X%02X",(int)(color.getRed() * 255),(int)(color.getGreen() * 255),(int)(color.getBlue() * 255));
-    }
 }

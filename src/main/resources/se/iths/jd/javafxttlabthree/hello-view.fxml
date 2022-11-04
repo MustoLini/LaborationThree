@@ -36,6 +36,11 @@
                         <ChoiceBox fx:id="choiceBox" prefWidth="150.0" />
                      </graphic>
                   </MenuItem>
+                  <MenuItem mnemonicParsing="false" text="Switch Size">
+                     <graphic>
+                        <Button mnemonicParsing="false" onMousePressed="#switchSize" text="Switch Size" />
+                     </graphic>
+                  </MenuItem>
                   <MenuItem mnemonicParsing="false" text="Switch Color">
                      <graphic>
                         <Button mnemonicParsing="false" onMouseReleased="#switchColor" text="Switch Color Button" />

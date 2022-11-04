@@ -1,10 +1,13 @@
 package se.iths.jd.javafxttlabthree.Model;
 
-import javafx.beans.property.*;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.paint.Color;
 import se.iths.jd.javafxttlabthree.shapes.Circle;
-import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.ShapeType;
 import se.iths.jd.javafxttlabthree.shapes.Square;
+import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.ShapeType;
 import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.Shapes;
 
 import java.util.ArrayList;
@@ -15,10 +18,10 @@ import static se.iths.jd.javafxttlabthree.shapes.shapesMainClass.ShapeType.SQUAR
 
 public class Model {
 
-    ObjectProperty<Color> color;
-    DoubleProperty size;
     public List<Shapes> shapes;
     public List<Shapes> selectedShapes;
+    ObjectProperty<Color> color;
+    DoubleProperty size;
     ShapeType whatShapeISSelected;
 
     public Model() {
@@ -27,7 +30,7 @@ public class Model {
         selectedShapes = new ArrayList<>();
         color = new SimpleObjectProperty<>(Color.BLACK);
         size = new SimpleDoubleProperty(4.3);
-        whatShapeISSelected= CIRCLE;
+        whatShapeISSelected = CIRCLE;
 
     }
 
@@ -54,14 +57,24 @@ public class Model {
         return shapes;
     }
 
-    public void setWhatShapeISSelected(ShapeType shapeType){
-
-        this.whatShapeISSelected= shapeType;
-
+    public void switchSize() {
+        for (Shapes shape : selectedShapes) {
+            if (shape.getClass() == Square.class) {
+                ((Square) shape).setRadius(size.getValue());
+            } else {
+                ((Circle) shape).setRadius(size.getValue());
+            }
+        }
     }
 
     public ShapeType getWhatShapeISSelected() {
         return whatShapeISSelected;
+    }
+
+    public void setWhatShapeISSelected(ShapeType shapeType) {
+
+        this.whatShapeISSelected = shapeType;
+
     }
 
     public Color getColor() {
@@ -92,10 +105,12 @@ public class Model {
     public void remove() {
         shapes.remove(shapes.size() - 1);
     }
-    public void switchColorOnSelected(){
-        for (Shapes shapes : selectedShapes){
+
+    public void switchColorOnSelected() {
+        for (Shapes shapes : selectedShapes) {
             shapes.setColor(getColor());
         }
     }
+
 
 }

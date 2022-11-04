@@ -9,15 +9,15 @@ import se.iths.jd.javafxttlabthree.shapes.Square;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ViewTest {
-    Model model= new Model();
-    Circle circle= new Circle(10,20, Color.ALICEBLUE,60);
-    Square square= new Square(5,5,Color.CHOCOLATE,25);
+    Model model = new Model();
+    Circle circle = new Circle(10, 20, Color.ALICEBLUE, 60);
+    Square square = new Square(5, 5, Color.CHOCOLATE, 25);
 
     @Test
     void addShapeToListAndChecksItsSize() {
         model.shapes.add(circle);
         model.shapes.add(square);
-        assertEquals(2,model.shapes.size());
+        assertEquals(2, model.shapes.size());
     }
 
     @Test

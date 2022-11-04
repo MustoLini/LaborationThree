@@ -31,16 +31,16 @@ public class Circle extends Shapes {
 
     @Override
     public boolean isSelected(double x, double y) {
-        double areaX= x- getX();
-        double areaY= y- getY();
-        double distance= Math.sqrt((areaX*areaX)+ (areaY*areaY));
-        return distance<= getRadius();
+        double areaX = x - getX();
+        double areaY = y - getY();
+        double distance = Math.sqrt((areaX * areaX) + (areaY * areaY));
+        return distance <= getRadius();
     }
 
     @Override
     public String toSVG() {
-        String color= "#"+ getColor().toString().substring(2,10);
-        return "<circle cx=\""+getX()+"\" cy=\""+getY()+"\" r=\""+ getRadius()/2+"\" fill=\""+ color+"\" />";
+        String color = "#" + getColor().toString().substring(2, 10);
+        return "<circle cx=\"" + getX() + "\" cy=\"" + getY() + "\" r=\"" + getRadius() / 2 + "\" fill=\"" + color + "\" />";
     }
     // TODO: 10/18/2022 Implement Shapes From Inteface Shapes
 }

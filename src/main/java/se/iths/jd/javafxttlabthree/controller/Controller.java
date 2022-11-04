@@ -116,6 +116,11 @@ public class Controller {
         modelInitialize.switchColorOnSelected();
         drawOnExecute();
     }
+    @FXML
+    void switchSize(MouseEvent event) {
+        modelInitialize.switchSize();
+        drawOnExecute();
+    }
 
     private void drawOnExecute() {
         GraphicsContext gc = canvas.getGraphicsContext2D();

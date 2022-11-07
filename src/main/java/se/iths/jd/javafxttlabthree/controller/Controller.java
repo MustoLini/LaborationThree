@@ -27,7 +27,7 @@ public class Controller {
     @FXML
     private MenuItem saveImage;
 
-    Model modelInitialize;
+    Model model;
     @FXML
     private Slider sizeOfBrush;
     @FXML
@@ -45,9 +45,9 @@ public class Controller {
     }
 
     public void initialize() {
-        modelInitialize = new Model();
-        colorPicker.valueProperty().bindBidirectional(modelInitialize.getcolor());
-        sizeOfBrush.valueProperty().bindBidirectional(modelInitialize.sizeProperty());
+        model = new Model();
+        colorPicker.valueProperty().bindBidirectional(model.getcolor());
+        sizeOfBrush.valueProperty().bindBidirectional(model.sizeProperty());
         choiceBox.setItems(shapeTypesList);
 
 
@@ -57,13 +57,13 @@ public class Controller {
     public void whatShapeYouHavePicked(ActionEvent event) {
         switch (choiceBox.getValue()) {
             case CIRCLE -> {
-                modelInitialize.setWhatShapeISSelected(ShapeType.CIRCLE);
+                model.setWhatShapeISSelected(ShapeType.CIRCLE);
             }
             case SQUARE -> {
-                modelInitialize.setWhatShapeISSelected(ShapeType.SQUARE);
+                model.setWhatShapeISSelected(ShapeType.SQUARE);
             }
             case IsSelected -> {
-                modelInitialize.setWhatShapeISSelected(ShapeType.IsSelected);
+                model.setWhatShapeISSelected(ShapeType.IsSelected);
             }
         }
     }
@@ -73,22 +73,23 @@ public class Controller {
         double x = event.getX();
         double y = event.getY();
         if (choiceBox.getValue()==ShapeType.IsSelected){
-            for (Shapes shapes: modelInitialize.getShapes()) {
+            for (Shapes shapes: model.getShapes()) {
                 if (shapes.isSelected( x,  y)){
+                    System.out.println(model.getSelectedShapes());
                     shapes.setBorderColor(Color.MAGENTA);
-                    modelInitialize.getSelectedShapes().add(shapes);
+                    model.getSelectedShapes().add(shapes);
                 }
             }
         }
         else {
-            modelInitialize.addShapes(x, y);
+            model.addShapes(x, y);
         }
         drawOnExecute();
     }
 
     @FXML
     void undoLatestThing(ActionEvent event) {
-        modelInitialize.remove();
+        model.remove();
         drawOnExecute();
     }
 
@@ -101,7 +102,7 @@ public class Controller {
 
     @FXML
     void saveImage() {
-        SaveSVG.save(modelInitialize);
+        SaveSVG.save(model);
 
         try {
             Image snapShot= canvas.snapshot(null,null);
@@ -113,12 +114,12 @@ public class Controller {
     }
     @FXML
     void switchColor(MouseEvent event) {
-        modelInitialize.switchColorOnSelected();
+        model.switchColorOnSelected();
         drawOnExecute();
     }
     @FXML
     void switchSize(MouseEvent event) {
-        modelInitialize.switchSize();
+        model.switchSize();
         drawOnExecute();
     }
 
@@ -126,7 +127,7 @@ public class Controller {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-        for (Shapes shape : modelInitialize.getShapes()) {
+        for (Shapes shape : model.getShapes()) {
             shape.draw(gc);
         }
     }

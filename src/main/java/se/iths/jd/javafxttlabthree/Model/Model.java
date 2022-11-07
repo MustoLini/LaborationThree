@@ -42,10 +42,12 @@ public class Model {
     public void addShapes(double x, double y) {
         if (getWhatShapeISSelected().equals(SQUARE)) {
             shapes.add(new Square(x, y, color.getValue(), size.getValue()));
-
+            System.out.println("Creating a Square");
+            System.out.println("Create Square where made at " + "x: " + x + " y: " + y);
         }
         if (getWhatShapeISSelected().equals(CIRCLE)) {
             shapes.add(new Circle(x, y, color.getValue(), size.getValue()));
+            System.out.println("Creating a Circle");
         }
     }
 

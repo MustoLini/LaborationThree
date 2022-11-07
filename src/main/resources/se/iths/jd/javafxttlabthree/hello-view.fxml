@@ -51,6 +51,6 @@
             <Menu mnemonicParsing="false" onAction="#infoOfProject" text="About" />
          </menus>
       </MenuBar>
-      <Canvas fx:id="canvas" height="1080.0" layoutX="-7.0" layoutY="25.0" onMouseClicked="#handleCanvasClick" width="3840.0" />
+      <Canvas fx:id="canvas" height="1080.0" layoutX="-7.0" layoutY="25.0" onMousePressed="#handleCanvasClick" width="3840.0" />
    </children>
 </AnchorPane>

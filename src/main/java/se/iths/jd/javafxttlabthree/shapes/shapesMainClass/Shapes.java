@@ -16,9 +16,7 @@ public abstract class Shapes {
         this.borderColor = Color.TRANSPARENT;
     }
 
-    public static String colorToString(Color color) {
-        return String.format("#%02X%02X%02X", (int) (color.getRed() * 255), (int) (color.getGreen() * 255), (int) (color.getBlue() * 255));
-    }
+
 
     public Color getBorderColor() {
         return borderColor;

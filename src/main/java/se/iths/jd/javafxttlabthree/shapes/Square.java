@@ -18,19 +18,22 @@ public class Square extends Shapes {
         graphicsContext.setFill(getBorderColor());
         graphicsContext.fillRect(getX() - (radius / 2) - 2.5, getY() - (radius / 2) - 2.5, radius + 5, radius + 5);
         graphicsContext.setFill(getColor());
-        graphicsContext.fillRect(getX() - (radius / 2), getY() - (radius / 2) , radius, radius);
+        graphicsContext.fillRect(getX() - (radius / 2), getY() - (radius / 2), radius, radius);
         System.out.println(this);
 
     }
 
     @Override
     public boolean isSelected(double x, double y) {
-        double westSide = x - (radius /2);
-        double eastSide = x + (radius /2);
-        double lowerEdge= y - (radius /2 );
-        double upperEdge= y+ (radius /2);
+        double leftX = getX() - getRadius() / 2;
+        double topY = getY() - getRadius() / 2;
 
-        return (westSide<= x&& x<= eastSide)&& (lowerEdge<= y && y<= upperEdge);
+
+        return x >= leftX &&
+                x <= leftX + radius &&
+                y >= topY &&
+                y <= topY + radius;
+
 
     }
 
@@ -44,7 +47,7 @@ public class Square extends Shapes {
 
     @Override
     public String toSVG() {
-        String color= "#"+getColor().toString().substring(2,10);
+        String color = "#" + getColor().toString().substring(2, 10);
         return "<rect x=\"" + getX() + "\" y=\"" + getY() + "\" width=\"" + radius + "\" height=\"" + radius + "\" fill=\"" + color + "\" />";
     }
     // TODO: 10/18/2022 Implement Shapes From Inteface Shapes

@@ -24,10 +24,10 @@ import java.io.File;
 
 
 public class Controller {
+    Model model;
+    ObservableList<ShapeType> shapeTypesList = FXCollections.observableArrayList(ShapeType.values());
     @FXML
     private MenuItem saveImage;
-
-    Model model;
     @FXML
     private Slider sizeOfBrush;
     @FXML
@@ -36,8 +36,6 @@ public class Controller {
     private ColorPicker colorPicker;
     @FXML
     private ChoiceBox<ShapeType> choiceBox;
-
-    ObservableList<ShapeType> shapeTypesList= FXCollections.observableArrayList(ShapeType.values());
 
     @FXML
     void closeProgram(ActionEvent event) {
@@ -72,16 +70,15 @@ public class Controller {
     private void handleCanvasClick(MouseEvent event) {
         double x = event.getX();
         double y = event.getY();
-        if (choiceBox.getValue()==ShapeType.IsSelected){
-            for (Shapes shapes: model.getShapes()) {
-                if (shapes.isSelected( x,  y)){
+        if (choiceBox.getValue() == ShapeType.IsSelected) {
+            for (Shapes shapes : model.getShapes()) {
+                if (shapes.isSelected(x, y)) {
                     System.out.println(model.getSelectedShapes());
                     shapes.setBorderColor(Color.MAGENTA);
                     model.getSelectedShapes().add(shapes);
                 }
             }
-        }
-        else {
+        } else {
             model.addShapes(x, y);
         }
         drawOnExecute();
@@ -105,18 +102,20 @@ public class Controller {
         SaveSVG.save(model);
 
         try {
-            Image snapShot= canvas.snapshot(null,null);
+            Image snapShot = canvas.snapshot(null, null);
             ImageIO.write(SwingFXUtils.fromFXImage(snapShot, null), "png", new File("paint.png"));
         } catch (Exception e) {
             System.out.println("Failed to save " + e);
         }
 
     }
+
     @FXML
     void switchColor(MouseEvent event) {
         model.switchColorOnSelected();
         drawOnExecute();
     }
+
     @FXML
     void switchSize(MouseEvent event) {
         model.switchSize();

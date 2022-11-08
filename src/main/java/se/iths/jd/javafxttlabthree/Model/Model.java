@@ -30,7 +30,6 @@ public class Model {
         selectedShapes = new ArrayList<>();
         color = new SimpleObjectProperty<>(Color.BLACK);
         size = new SimpleDoubleProperty(4.3);
-        whatShapeISSelected = CIRCLE;
 
     }
 
@@ -48,6 +47,7 @@ public class Model {
         if (getWhatShapeISSelected().equals(CIRCLE)) {
             shapes.add(new Circle(x, y, color.getValue(), size.getValue()));
             System.out.println("Creating a Circle");
+            System.out.println("Create Circle where made at " + "x: " + x + " y: " + y);
         }
     }
 

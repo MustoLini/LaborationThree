@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import se.iths.jd.javafxttlabthree.Model.Model;
 import se.iths.jd.javafxttlabthree.shapes.Circle;
 import se.iths.jd.javafxttlabthree.shapes.Square;
+import se.iths.jd.javafxttlabthree.shapes.shapesMainClass.ShapeType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -15,8 +16,9 @@ public class ViewTest {
 
     @Test
     void addShapeToListAndChecksItsSize() {
-        model.shapes.add(circle);
-        model.shapes.add(square);
+        model.setWhatShapeISSelected(ShapeType.SQUARE);
+        model.addShapes(5,5);
+        model.addShapes(5,5);
         assertEquals(2, model.shapes.size());
     }
 
